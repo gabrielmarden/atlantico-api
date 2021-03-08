@@ -5,15 +5,15 @@ spring:
   application:
     name: api
   datasource:
-    url: jdbc:mysql://localhost:3306/atlanticodb
-    username: root
-    password: atlanticoapi@2021
+    url: ${DATABASE_URL}
+  rabbitmq:
+    host: ${CLOUDAMQP_URL}
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 jwt:
   secret: atlanticoapi@2021
 
@@ -23,3 +23,5 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     preferIpAddress: true
+
+
