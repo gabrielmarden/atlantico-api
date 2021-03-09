@@ -15,16 +15,12 @@ import java.util.List;
 public class EmailService {
 
     @Autowired
-    private EmailRepository emailRepository;
-
-    @Autowired
     private UserService userService;
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
     public Email save(Email email){
-        Email emailSaved = emailRepository.save(email);
         sendEmailToRabbit(email);
 
         List<String> admins = userService.findUserAdminEmail();
@@ -34,7 +30,7 @@ public class EmailService {
         });
 
 
-        return emailSaved;
+        return email;
     }
 
     private void sendEmailToRabbit(Email email){
