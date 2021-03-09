@@ -25,7 +25,7 @@ public class EmailService {
 
     public Email save(Email email){
         Email emailSaved = emailRepository.save(email);
-        sendEmailToRabbit(emailSaved);
+        sendEmailToRabbit(email);
 
         List<String> admins = userService.findUserAdminEmail();
         admins.forEach(admin->{
