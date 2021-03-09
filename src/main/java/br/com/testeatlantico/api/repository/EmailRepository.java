@@ -1,21 +1,10 @@
 package br.com.testeatlantico.api.repository;
 
 import br.com.testeatlantico.api.model.Email;
-import org.springframework.stereotype.Service;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
+@Repository
+public interface EmailRepository extends JpaRepository<Email,Long> {
 
-@Service
-public class EmailRepository {
-    private List<Email> emails;
-
-    public EmailRepository(){
-        this.emails = new ArrayList<>();
-    }
-
-    public Email save(Email email){
-        this.emails.add(email);
-        return email;
-    }
 }
