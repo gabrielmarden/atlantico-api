@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/email")
+@CrossOrigin
 public class EmailController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class EmailController {
     public ResponseEntity<Email> save(@RequestBody Email email,@RequestHeader("Authorization")String token){
         email.setSender(jwtTokenUtil.getUsernameFromToken(token.substring(7)));
         Email emailSaved = emailService.save(email);
-        return ResponseEntity.ok().body(emailSaved);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/admin")

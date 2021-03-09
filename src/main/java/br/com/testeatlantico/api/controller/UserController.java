@@ -35,7 +35,6 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<Void> saveUser(@RequestBody User user){
-        if(user.equals(null)) System.out.println("NULOOOOOO");
         userService.saveUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
