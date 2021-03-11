@@ -13,6 +13,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     User findByLogin(String login);
 
-    @Query(value="select u from User u where u.admin = 1")
+    @Query(value="select u from User u where u.admin = true")
     List<User> findUserAdmin();
 }
